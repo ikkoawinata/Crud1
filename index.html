@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://localhost/crud/index.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD</title>
+    <link href="./index_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./index_files/style.css" rel="stylesheet" type="text/css">
+    <style>
+        /* Tambahkan gaya kustom jika diperlukan */
+        .footer {
+            background-color: #D7CDC6;
+            color: #000;
+        }
+
+        @media (max-width: 767px) {
+            .footer {
+                font-size: 14px;
+            }
+        }
+
+       
+    /* Tambahkan gaya kustom jika diperlukan */
+    .footer {
+        background-color: #D7CDC6;
+        color: #000;
+        font-size: 12px; /* Atur ukuran font default */
+        padding: 10px 0; /* Tambahkan padding untuk jarak vertikal yang lebih baik */
+    }
+
+    @media (max-width: 767px) {
+        .footer {
+            font-size: 14px; /* Atur ukuran font lebih besar pada perangkat kecil */
+        }
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Awal kontainer -->
+    <div class="container mt-5">
+        <h1 class="text-center">PT. AWINATAX</h1>
+
+        <!-- Bagian input barang -->
+        <div class="row">
+            <div class="col-md-12 col-lg-8 mx-auto">
+                <div class="card mt-3">
+                    <div class="card-header bg-secondary text-light">
+                        Form Input Data Barang
+                    </div>
+                    <div class="card-body">
+                                                    <div class="alert alert-danger">
+                                Semua kolom harus diisi!                            </div>
+                                                <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">Kode Barang</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Kode Barang" name="tkode" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama Barang" name="tnama" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Asal Barang</label>
+                                <select class="form-select" name="tasal">
+                                    <option value="Pembelian">Pembelian</option>
+                                    <option value="Hibah">Hibah</option>
+                                    <option value="Sumbangan">Sumbangan</option>
+                                    <option value="Bantuan">Bantuan</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Jumlah Barang</label>
+                                        <input type="number" class="form-control" placeholder="Masukkan Jumlah Barang" name="tjumlah" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Satuan</label>
+                                        <select class="form-select" name="tsatuan">
+                                            <option value="Unit">Unit</option>
+                                            <option value="Kotak">Kotak</option>
+                                            <option value="Pcs">Pcs</option>
+                                            <option value="Box">Box</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal Diterima</label>
+                                        <input type="date" class="form-control" name="ttanggal_diterima" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="bsimpan" class="btn btn-primary">Simpan</button>
+                            <a href="http://localhost/crud/index.php" class="btn btn-secondary">Batal</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian tabel data barang -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-light">
+                        Data Barang
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" class="mb-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cari Barang..." name="keyword" value="">
+                                <button class="btn btn-primary" type="submit">Cari</button>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kode</th>
+                                        <th>Nama</th>
+                                        <th>Asal</th>
+                                        <th>Jumlah</th>
+                                        <th>Satuan</th>
+                                        <th>Tanggal Diterima</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>1</td>
+                                    <td>INV-2024-003</td>
+                                    <td>Meja Kantor TERBARU</td>
+                                    <td>Hibah</td>
+                                    <td>2</td>
+                                    <td>Unit</td>
+                                    <td>2024-08-26</td>
+                                    <td>
+                                        <a href="http://localhost/crud/index.php?hal=edit&amp;id=8" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="http://localhost/crud/index.php?hal=hapus&amp;id=8" class="btn btn-danger btn-sm" onclick="return confirm(&quot;Apakah Anda yakin ingin menghapus data ini?&quot;)">Hapus</a>
+                                    </td>
+                                </tr><tr>
+                                    <td>2</td>
+                                    <td>INV-2024-001</td>
+                                    <td>Meja Kantor</td>
+                                    <td>Pembelian</td>
+                                    <td>1</td>
+                                    <td>Unit</td>
+                                    <td>2024-08-03</td>
+                                    <td>
+                                        <a href="http://localhost/crud/index.php?hal=edit&amp;id=1" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="http://localhost/crud/index.php?hal=hapus&amp;id=1" class="btn btn-danger btn-sm" onclick="return confirm(&quot;Apakah Anda yakin ingin menghapus data ini?&quot;)">Hapus</a>
+                                    </td>
+                                </tr>                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer mt-5 py-3">
+            <div class="container text-center">
+                <p class="text-muted">© 2024 PT. AWINATAX. All rights reserved.</p>
+            </div>
+        </footer>
+        <!-- Akhir kontainer -->
+        <script src="./index_files/bootstrap.bundle.min.js.download" integrity="sha384-F1vWhbQJX0nJQJl2xjxwP9VY3Ck6YXMz/sViovdYOcLtoH5O2Fwi2jzMCrzYlhVv" crossorigin="anonymous"></script>
+        
+
+
+</body></html>
